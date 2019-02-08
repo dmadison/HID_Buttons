@@ -39,6 +39,9 @@ enum class HID_Button_Type {
 
 class HID_Button {
 public:
+	HID_Button();
+	~HID_Button();
+
 	void press();
 	void release();
 
@@ -55,6 +58,12 @@ protected:
 	virtual void sendState(boolean state) = 0;
 
 	boolean pressed = false;
+
+private:
+	static HID_Button * head;
+	static HID_Button * tail;
+
+	HID_Button * next = nullptr;
 };
 
 #endif
