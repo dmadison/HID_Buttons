@@ -30,11 +30,15 @@
 #include <Arduino.h>
 
 enum class HID_Button_Type {
-	None,
+	// Variants
 	Keyboard,
 	Mouse,
 	Joystick,
 	Custom,
+
+	// Meta Options
+	All,
+	None,
 };
 
 class HID_Button {
@@ -42,7 +46,7 @@ public:
 	HID_Button();
 	~HID_Button();
 
-	static void releaseAll();
+	static void releaseAll(HID_Button_Type limitTo = HID_Button_Type::All);
 
 	void press();
 	void release();

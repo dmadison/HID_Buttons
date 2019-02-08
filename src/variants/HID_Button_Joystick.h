@@ -37,6 +37,10 @@ public:
 	JoystickButton(uint8_t b) :
 		buttonNumber(b) {}
 
+	static void releaseAll() {
+		HID_Button::releaseAll(HID_Button_Type::Joystick);
+	}
+
 	uint16_t getButton() const {
 		return buttonNumber;
 	}

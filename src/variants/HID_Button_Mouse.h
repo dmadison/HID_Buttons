@@ -35,6 +35,10 @@ public:
 	MouseButton(uint8_t b) :
 		buttonID(b) {}
 
+	static void releaseAll() {
+		HID_Button::releaseAll(HID_Button_Type::Mouse);
+	}
+
 	uint16_t getButton() const {
 		return buttonID;
 	}
@@ -42,8 +46,6 @@ public:
 	HID_Button_Type getType() const {
 		return HID_Button_Type::Mouse;
 	}
-
-	static const HID_Button_Type HID_Type = HID_Button_Type::Mouse;
 
 protected:
 	void sendState(boolean state) {
