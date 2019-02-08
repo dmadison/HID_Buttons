@@ -35,6 +35,10 @@ public:
 	KeyboardButton(char k) :
 		key(k) {}
 
+	static void releaseAll() {
+		HID_Button::releaseAll(HID_Button_Type::Keyboard);
+	}
+
 	uint16_t getButton() const {
 		return key;
 	}
