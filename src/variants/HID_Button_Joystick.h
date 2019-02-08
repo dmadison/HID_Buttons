@@ -29,8 +29,24 @@
 
 #include "HID_Button_API.h"
 
-#if defined(JOYSTICK_h)
-extern Joystick_ Joystick;
+ /*
+  * Include Guard Info
+  * --------------------
+  *
+  * Arduino Boards:
+  *     JOYSTICK_h   MHeironimus header include guard (pluggable HID)
+  *     USB_CON      defined by the architecture if USB support exists
+  *
+  * Teensy:
+  *     TEENSYDUINO             defined if using any Teensy board
+  *     USB_HID                 defined by boards.txt if using USB type "Keyboard + Mouse + Joystick"
+  *     USB_SERIAL_HID          defined by boards.txt if using USB type "Serial + Keyboard + Mouse + Joystick"
+  *     USB_FLIGHTSIM_JOYSTICK  defined by boards.txt if using USB type "Flight Sim Controls + Joystick"
+  */
+
+#if (defined(JOYSTICK_h) && defined(USBCON)) || \
+	(defined(TEENSYDUINO) && \
+	(defined(USB_HID) || defined(USB_SERIAL_HID) || defined(USB_FLIGHTSIM_JOYSTICK)))
 
 class JoystickButton : public HID_Button {
 public:
@@ -51,7 +67,12 @@ public:
 
 protected:
 	void sendState(boolean state) {
-		Joystick.setButton(buttonNumber, state);
+		#if defined(JOYSTICK_h)  // MHeironimus library
+			extern Joystick_ Joystick;  // Using the expected name for the object
+			Joystick.setButton(buttonNumber, state);
+		#elif defined(TEENSYDUINO)
+			Joystick.button(buttonNumber, state);
+		#endif
 	}
 
 	const uint8_t buttonNumber;

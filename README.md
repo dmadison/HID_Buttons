@@ -27,13 +27,15 @@ This small Arduino library makes it easier to set up programs that use Keyboard,
 	ButtonA.set(stickY < -300);
 ```
 
-All HID button types share a common base class and be treated identically, allowing you to share logic between buttons on composite devices (e.g. Keyboard + Mouse).
+All HID button types share a common base class and are treated identically, allowing you to share logic between buttons on composite devices (e.g. Keyboard + Mouse).
 
 ## Supported HID Types
 The library currently supports three HID button types:
 * [Keyboard](https://www.arduino.cc/reference/en/language/functions/usb/keyboard/)
 * [Mouse](https://www.arduino.cc/reference/en/language/functions/usb/mouse/)
 * [Joystick](https://github.com/MHeironimus/ArduinoJoystickLibrary)
+
+All three of these HID types are also supported on the Teensy using its native libraries.
 
 ## License
 Released under the terms of the permissive [MIT license](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for more information.
