@@ -29,7 +29,24 @@
 
 #include "HID_Button_API.h"
 
-#if defined(MOUSE_h) && defined(_USING_HID)
+/*
+ * Include Guard Info
+ * --------------------
+ *
+ * Arduino Boards:
+ *     MOUSE_h      built-in library header include guard
+ *     _USING_HID   defined in HID.h if USB is enabled (USBCON)
+ *
+ * Teensy:
+ *     TEENSYDUINO     defined if using any Teensy board
+ *     USB_HID         defined by boards.txt if using USB type "Keyboard + Mouse + Joystick"
+ *     USB_SERIAL_HID  defined by boards.txt if using USB type "Serial + Keyboard + Mouse + Joystick"
+ */
+
+#if (defined(MOUSE_h) && defined(_USING_HID)) || \
+	(defined(TEENSYDUINO) && \
+	(defined (USB_HID) || defined(USB_SERIAL_HID)))
+
 class MouseButton : public HID_Button {
 public:
 	MouseButton(uint8_t b) :
