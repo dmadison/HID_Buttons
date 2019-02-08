@@ -42,6 +42,8 @@ public:
 	HID_Button();
 	~HID_Button();
 
+	static void releaseAll();
+
 	void press();
 	void release();
 

@@ -77,6 +77,16 @@ HID_Button::~HID_Button() {
 	}
 }
 
+// Release all buttons, using the linked list
+void HID_Button::releaseAll() {
+	HID_Button * ptr = head;
+
+	while (ptr != nullptr) {
+		ptr->release();
+		ptr = ptr->next;
+	}
+}
+
 void HID_Button::press() {
 	set(true);
 }
