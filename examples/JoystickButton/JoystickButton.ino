@@ -38,12 +38,16 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_GAMEPAD,
 	false, false, false,    // No Rx, Ry, or Rz
 	false, false,           // No rudder or throttle
 	false, false, false);   // No accelerator, brake, or steering
+
+const uint8_t ButtonOffset = 1; // Arduino Joystick buttons are indexed at 0
+#else
+const uint8_t ButtonOffset = 0;  // Teensy Joystick buttons are indexed at 1
 #endif
 
 #include <HID_Buttons.h>  // Must import AFTER Joystick.h
 
 const uint8_t ButtonPin = 6;  // Pin for hardware button
-const uint8_t ButtonNumber = 0;  // Press this Joystick button # when the pin is grounded
+const uint8_t ButtonNumber = 1 - ButtonOffset;  // Press this Joystick button # when the pin is grounded
 
 JoystickButton myButton(ButtonNumber);
 
