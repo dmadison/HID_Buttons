@@ -77,6 +77,10 @@ HID_Button::~HID_Button() {
 	}
 }
 
+void HID_Button::releaseAll() {
+	releaseAll(HID_Button_Type::All);
+}
+
 // Release all buttons, using the linked list
 void HID_Button::releaseAll(HID_Button_Type releaseOnly) {
 	if (releaseOnly == HID_Button_Type::None) return;

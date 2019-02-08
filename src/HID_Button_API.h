@@ -46,7 +46,7 @@ public:
 	HID_Button();
 	~HID_Button();
 
-	static void releaseAll(HID_Button_Type limitTo = HID_Button_Type::All);
+	static void releaseAll();
 
 	void press();
 	void release();
@@ -61,6 +61,7 @@ public:
 	virtual HID_Button_Type getType() const = 0;
 
 protected:
+	static void releaseAll(HID_Button_Type limitTo);
 	virtual void sendState(boolean state) = 0;
 
 	boolean pressed = false;
