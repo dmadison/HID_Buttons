@@ -1,0 +1,45 @@
+#############################################
+# Syntax Coloring Map For HID Buttons Library
+#############################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+# Library
+HID_Buttons	KEYWORD1
+
+# API Class
+HID_Button	KEYWORD1
+
+# Variant Classes	KEYWORD1
+KeyboardButton	KEYWORD1
+MouseButton	KEYWORD1
+JoystickButton	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+# Set State
+press	KEYWORD2
+release	KEYWORD2
+
+toggle	KEYWORD2
+write	KEYWORD2
+
+set	KEYWORD2
+
+# Get Attribute
+isPressed	KEYWORD2
+getButton	KEYWORD2
+getType	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
