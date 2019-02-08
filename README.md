@@ -27,7 +27,7 @@ This small Arduino library makes it easier to set up programs that use Keyboard,
 	ButtonA.set(stickY < -300);
 ```
 
-All HID button types share a common base class and be treated identically, allowing you to share logic between buttons on composite devices (e.g. Keyboard + Mouse).
+All HID button types share a common base class and are treated identically, allowing you to share logic between buttons on composite devices (e.g. Keyboard + Mouse).
 
 ## Supported HID Types
 The library currently supports three HID button types:
