@@ -37,5 +37,7 @@ The library currently supports three HID button types:
 
 All three of these HID types are also supported on the Teensy using its native libraries.
 
+To add support for a new HID type, please see [the documentation in the 'extras' folder](extras/Adding%20New%20Button%20Types.md).
+
 ## License
 Released under the terms of the permissive [MIT license](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for more information.
