@@ -51,6 +51,8 @@
 	(defined(USB_KEYBOARDONLY) || defined(USB_HID) || defined(USB_SERIAL_HID) \
 	 || defined(USB_TOUCHSCREEN) || defined(USB_HID_TOUCHSCREEN)))
 
+#define HID_BUTTON_KEYBOARD
+
 class KeyboardButton : public HID_Button {
 public:
 

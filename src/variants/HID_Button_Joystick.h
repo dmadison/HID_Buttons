@@ -48,6 +48,8 @@
 	(defined(TEENSYDUINO) && \
 	(defined(USB_HID) || defined(USB_SERIAL_HID) || defined(USB_FLIGHTSIM_JOYSTICK)))
 
+#define HID_BUTTON_JOYSTICK
+
 class JoystickButton : public HID_Button {
 public:
 	JoystickButton(uint8_t b) :
