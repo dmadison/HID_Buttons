@@ -47,6 +47,8 @@
 	(defined(TEENSYDUINO) && \
 	(defined (USB_HID) || defined(USB_SERIAL_HID)))
 
+#define HID_BUTTON_MOUSE
+
 class MouseButton : public HID_Button {
 public:
 	MouseButton(uint8_t b) :

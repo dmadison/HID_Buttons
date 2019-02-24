@@ -25,6 +25,12 @@ Next, add some guards so that the button class is only defined when the relevant
 #endif
 ```
 
+Immediately after this you should define your own flag for the HID type. This is so that the user can easily test whether the button type exists in their own code:
+
+```cpp
+#define HID_BUTTON_MOUSE
+```
+
 Inside of this `#if` block is the button class definition. Start by importing the base class, `HID_Button`, using public inheritance:
 
 ```cpp
