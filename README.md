@@ -81,7 +81,7 @@ virtual HID_Button_Type getType() const;
 
 ### IsPressed
 
-Calling `getPressed()` will return the internal button state, where 'true' is pressed and 'false' is released.
+Calling `isPressed()` will return the internal button state, where 'true' is pressed and 'false' is released.
 
 ### GetButton
 
