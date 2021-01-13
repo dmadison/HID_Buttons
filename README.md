@@ -1,6 +1,6 @@
 # HID Buttons Library
 
-[![arduino-library-badge](https://www.ardu-badge.com/badge/HID%20Buttons.svg?)](https://www.ardu-badge.com/HID%20Buttons)
+[![arduino-library-badge](https://www.ardu-badge.com/badge/HID%20Buttons.svg?)](https://www.ardu-badge.com/HID%20Buttons) [![Build Status](https://github.com/dmadison/HID_Buttons/workflows/build/badge.svg?branch=master)](https://github.com/dmadison/HID_Buttons/actions?query=workflow%3Abuild)
 
 This small Arduino library makes it easier to set up programs that use Keyboard, Mouse, or Joystick buttons by storing the associated key / button ID and output state for comparison. This makes your code cleaner, simpler, and prevents spamming USB reports with duplicated keypresses.
 
