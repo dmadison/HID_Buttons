@@ -1,0 +1,62 @@
+name: build
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        board: ["Arduino Leonardo"]
+        include:
+          - board: "Arduino Leonardo"  # board name, human-readable (matching board array above)
+            platform: "arduino:avr"  # board platform, to be installed by the CLI
+            fqbn: "arduino:avr:leonardo"  # fully qualified board name
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Arduino CLI
+        uses: arduino/setup-arduino-cli@v1.1.1
+
+      - name: Install Board Platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install ${{ matrix.platform }}
+
+      - name: Install Extra Libraries
+        run: |
+          arduino-cli lib install Keyboard
+          arduino-cli lib install Mouse
+          git clone https://github.com/MHeironimus/ArduinoJoystickLibrary.git
+          cp -r ArduinoJoystickLibrary "$HOME/Arduino/libraries/Joystick"
+
+      - name: Add Library Symbolic Link to Repo
+        run: |
+          mkdir --parents "$HOME/Arduino/libraries"
+          ln --symbolic "$PWD" "$HOME/Arduino/libraries/."
+
+      - name: Compile Library Examples
+        run: |
+          buildSketchPath() {
+            sktch=${1##*/examples/};
+            sktch=${sktch%/*.ino};
+            echo -e "\nBuilding sketch $sktch.ino";
+            arduino-cli compile --fqbn ${{ matrix.fqbn }} "$1";
+          }
+          buildExampleSketch() {
+            buildSketchPath "$PWD/examples/$1/$2/$2.ino";
+          }
+          buildExampleFolder() {
+            IFS=$'\n'; set -f;
+            for f in $(find $PWD/examples/"$1" -name '*.ino');
+            do
+              buildSketchPath $f;
+            done;
+            unset IFS; set +f;
+          }
+          buildExampleFolder Keyboard
+          buildExampleFolder Mouse
+          buildExampleFolder Joystick
